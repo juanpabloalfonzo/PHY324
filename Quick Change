@@ -1,0 +1,2 @@
+mean_d2=np.mean(d2)
+un_d2=np.std(d2)/10
