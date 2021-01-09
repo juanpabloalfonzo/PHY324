@@ -61,5 +61,6 @@ plt.hlines(np.pi/4,2**7,2**14)
 plt.xlabel("Number of Generated Points")
 plt.ylabel('Number of Points Inside Circle')
 plt.title('Randomly Generated Points in a 1x1 Square That Lie in a Concetric Circle of Radius 1')
+#Git test
 plt.show()
 plt.figure()
