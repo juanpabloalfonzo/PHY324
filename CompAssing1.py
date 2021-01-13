@@ -12,7 +12,6 @@ def in_circle(N):
             y=ra.uniform(-1,1)
             X[i]=x #Storing Position 
             Y[i]=y
-
         inside=np.where(X**2+Y**2<1) #Finding points inside circle
         num_inside[z]=np.size(inside) #Storing number of points inside circle 
     return(num_inside)
@@ -71,11 +70,12 @@ means=np.array([mean_a,mean_b, mean_c,mean_d, mean_e,mean_f])
 un=np.array([un_a,un_b, un_c,un_d, un_e,un_f])
 
 plt.semilogx(N,means/N, basex=2)
-plt.errorbar(N,means/N,yerr=un)
-plt.hlines(np.pi/4,2**7,2**14)
+plt.errorbar(N,means/N,yerr=un, label='Monte Carlo Simulation Results')
+plt.hlines(np.pi/4,2**7,2**14, label=r'$\frac{\pi}{4}$')
 plt.xlabel("Number of Generated Points")
 plt.ylabel('Ratio of Points Inside Circle')
 plt.title('Randomly Generated Points in a 2x2 Square That Lie in a Concetric Circle of Radius 1')
+plt.legend()
 plt.show()
 plt.figure()
 
