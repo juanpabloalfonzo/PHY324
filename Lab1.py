@@ -29,7 +29,7 @@ Thermistor_Resistance=TD[:,2] #In K ohms
 Thermistor_Resistance_Err=TD[:,3] 
 
 #Fitting the theoretical equation to the data 
-popt, pcov= curve_fit(SHE,Thermistor_Resistance,1/Thermistor_Temp, absolute_sigma='True', sigma= Thermistor_Temp_Err)
+popt, pcov= curve_fit(SHE,Thermistor_Resistance,1/Thermistor_Temp, absolute_sigma='True', sigma= Thermistor_Temp_Err,p0=(1e-3,1e-4,1,1e-8))
 
 plt.title('Thermistor Temperature as a Function of its Electrical Resistance')
 plt.xlabel('Resitance (k' r'$\Omega$' ')')
@@ -48,7 +48,7 @@ Diode_Current=DD[:,2]
 Diode_Current_Err=DD[:,3]
 
 #Fitting the theoretical equation to the data 
-popt1, pcov1= curve_fit(SD,Diode_Voltage,Diode_Current, absolute_sigma='True', sigma= Diode_Current_Err)
+popt1, pcov1= curve_fit(SD,Diode_Voltage,Diode_Current, absolute_sigma='True', sigma= Diode_Current_Err,p0=(1,1e-10))
 
 plt.title('I-V Curve of a Silicon Diode')
 plt.xlabel('Voltage (V)')
