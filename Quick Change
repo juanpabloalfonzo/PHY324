@@ -1,40 +1,46 @@
+#RMS Code
+
 #N=2**8
-a3=under_curve3(2**8)
-mean_a3=np.mean(a3)
-un_a3=np.std(a3)/10
+a=RMS(2**8)
+mean_a=np.sqrt(np.mean((a**2)))
+un_a=np.std(a)/10
 
 #N=2**9
-b3=under_curve3(2**9)
-mean_b3=np.mean(b3)
-un_b3=np.std(b3)/10
+b=RMS(2**9)
+mean_b=np.sqrt(np.mean((b**2)))
+un_b=np.std(b)/10
 
 #N=2**10
-c3=under_curve3(2**10)
-mean_c3=np.mean(c3)
-un_c3=np.std(c3)/10
+c=RMS(2**10)
+mean_c=np.sqrt(np.mean((c**2)))
+un_c=np.std(c)/10
 
 #N=2**11
-d3=under_curve3(2**11)
-mean_d3=np.mean(d3)
-un_d3=np.std(d3)/10
+d=RMS(2**11)
+mean_d=np.sqrt(np.mean((d**2)))
+un_d=np.std(d)/10
 
 #N=2**12
-e3=under_curve3(2**12)
-mean_e3=np.mean(e3)
-un_e3=np.std(e3)/10
+e=RMS(2**12)
+mean_e=np.sqrt(np.mean((e**2)))
+un_e=np.std(e)/10
 
 #N=2**13
-f3=under_curve3(2**13)
-mean_f3=np.mean(f3)
-un_f3=np.std(f3)/10
+f=RMS(2**13)
+mean_f=np.sqrt(np.mean((f**2)))
+un_f=np.std(f)/10
 
-means3=np.array([mean_a3,mean_b3, mean_c3,mean_d3, mean_e3,mean_f3])
-un3=np.array([un_a3,un_b3, un_c3,un_d3, un_e3,un_f3])
+N=np.array([2**8,2**9,2**10,2**11,2**12,2**13])
+means=np.array([mean_a,mean_b, mean_c,mean_d, mean_e,mean_f])
+un=np.array([un_a,un_b, un_c,un_d, un_e,un_f])
 
-plt.semilogx(N,means2/N, basex=2)
-plt.errorbar(N,means2/N,yerr=un2/N)
+plt.semilogx(N,means, basex=2)
+plt.errorbar(N,means,yerr=un/N, label='Monte Carlo Simulation Results')
+plt.hlines(np.sqrt(N),2**3,2**14,label='Theoretical Value')
 plt.xlabel("Number of Generated Points")
-plt.ylabel('Ratio of Points Under Curve')
-plt.title('Randomly Generated Points That Lie Under $Sin^2(1/x)$ for 0<x<1 and 0<y<1')
+plt.ylabel('RMS after 100 Trials')
+plt.title('1-D Random Walk (RMS)')
+plt.legend()
+plt.savefig('1D-RandomWalk(RMS).png')
 plt.show()
 plt.figure()

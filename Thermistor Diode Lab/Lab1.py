@@ -45,7 +45,7 @@ plt.figure()
 
 
 def Temp(R): #Function that takes measured/inputed resitance in Kohms and returns the temp in degrees C
-    return 1/(popt[0]+popt[1]*(np.log(R))+popt[2]*(np.log(R))**2+popt[3]*(np.log(R))**3)
+    return 1/(popt[0]+popt[1]*(np.log(R))+popt[2]*(np.log(R))**2+popt[3]*(np.log(R))**3)-273.15
 
 
 

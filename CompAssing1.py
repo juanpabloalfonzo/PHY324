@@ -46,7 +46,7 @@ def under_curve3(N):
         num_inside[z]=np.size(inside) #Storing number of points under the Curve 
     return(num_inside)
 
-plt.ion()
+# plt.ion()
 
 #Exercise 1
 
@@ -91,6 +91,7 @@ plt.xlabel("Number of Generated Points")
 plt.ylabel('Ratio of Points Inside Circle')
 plt.title('Randomly Generated Points in a 2x2 Square That Lie in a Concetric Circle of Radius 1')
 plt.legend()
+plt.savefig('InsideCircle.png')
 plt.show()
 plt.figure()
 
@@ -135,6 +136,7 @@ plt.errorbar(N,means2/N,yerr=un2/N)
 plt.xlabel("Number of Generated Points")
 plt.ylabel('Ratio of Points Under Curve')
 plt.title('Randomly Generated Points That Lie Under' r'$Sin^2(1/x)$' 'for 0<x<1 and 0<y<1')
+plt.savefig('UnderCurve1.png')
 plt.show()
 plt.figure()
 
@@ -179,7 +181,51 @@ plt.legend()
 plt.xlabel("Number of Generated Points")
 plt.ylabel('Ratio of Points Under Curve')
 plt.title('Randomly Generated Points That Lie Under' r'$\sqrt{1-x^2}$' 'for 0<x<1 and 0<y<1')
+plt.savefig('UnderCurve2.png')
 plt.show()
 plt.figure()
 
 #Excersise 4 
+
+# #Method 1
+# num_inside1=np.zeros(100)
+# for z in range(100): #Runs the trial 100 times
+#     X=np.zeros(100000)
+#     Y=np.zeros(100000)
+#     for i in range(100000): 
+#         r=ra.uniform(0,1) #Generating Position
+#         theta=ra.uniform(0,2*np.pi)
+#         x=r*np.cos(theta)
+#         y=r*np.sin(theta)
+#         X[i]=x #Storing Position 
+#         Y[i]=y
+#     inside=np.where(X**2+Y**2<1) #Finding points inside circle
+#     num_inside1[z]=np.mean(inside) #Storing average of X**2+Y**2 values inside circle 
+
+# #Method 2
+# num_inside2=np.zeros(100)
+# for z in range(100): #Runs the trial 100 times
+#     X=np.zeros(100000)
+#     Y=np.zeros(100000)
+#     for i in range(100000): 
+#         x=ra.uniform(-1,1) #Generating Points
+#         y=ra.uniform(-np.sqrt(1-x**2),np.sqrt(1-x**2))
+#         X[i]=x #Storing Position 
+#         Y[i]=y
+#     inside=np.where(X**2+Y**2<1) #Finding points inside circle
+#     num_inside2[z]=np.mean(inside) #Storing average of X**2+Y**2 values inside circle 
+
+# #Method 3
+# num_inside3=np.zeros(100)
+# for z in range(100): #Runs the trial 100 times
+#     X=np.zeros(100000)
+#     Y=np.zeros(100000)
+#     for i in range(100000): 
+#         x=ra.uniform(-1,1)
+#         y=ra.uniform(-1,1)
+#         X[i]=x #Storing Position 
+#         Y[i]=y
+#     inside=np.where(X**2+Y**2<1) #Finding points inside circle
+#     num_inside3[z]=np.mean(inside) #Storing average of X**2+Y**2 values inside circle 
+
+
