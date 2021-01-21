@@ -26,6 +26,21 @@ def RMS(N):
         distance[z]=np.sum(X) #Storing distance after N steps 
     return(distance) #Array containing the distance of 100 trials of N steps each
 
+def RMS2D(N):
+    distance=np.zeros(100)
+    for z in range(100): #Runs the trial 100 times
+        X=np.zeros(N)
+        Y=np.zeros(N)
+        for i in range(N): 
+            #Generating Position
+            theta=ra.uniform(0,2*np.pi)
+            x=np.cos(theta)
+            y=np.sin(theta)
+            X[i]=x #Storing Position 
+            Y[i]=y
+        distance[z]=np.sum(np.sqrt(np.sum(X)**2+np.sum(Y)**2)) #Storing distance after N steps 
+    return(distance) #Array containing the distance of 100 trials of N steps each
+
 
 #Excercise 5
 X=np.zeros(1000)
@@ -133,7 +148,7 @@ un=np.array([un_a,un_b, un_c,un_d, un_e,un_f])
 
 plt.semilogx(N,means, basex=2)
 plt.errorbar(N,means,yerr=un/N, label='Monte Carlo Simulation Results')
-plt.hlines(np.sqrt(N),2**8,2**13,label='Theoretical Values' r'$\sqrt{N}$')
+plt.plot(N,np.sqrt(N),label='Theoretical Values' r'$\sqrt{N}$')
 plt.xlabel("Number of Generated Points (N)")
 plt.ylabel('RMS after 100 Trials')
 plt.title('1-D Random Walk (RMS)')
@@ -142,6 +157,53 @@ plt.savefig('1D-RandomWalk(RMS).png')
 plt.show()
 plt.figure()
 
+#RMS2D
+#RMS2D Code
+
+#N=2**8
+a=RMS2D(2**8)
+mean_a=np.sqrt(np.mean((a**2)))
+un_a=np.std(a)/10
+
+#N=2**9
+b=RMS2D(2**9)
+mean_b=np.sqrt(np.mean((b**2)))
+un_b=np.std(b)/10
+
+#N=2**10
+c=RMS2D(2**10)
+mean_c=np.sqrt(np.mean((c**2)))
+un_c=np.std(c)/10
+
+#N=2**11
+d=RMS2D(2**11)
+mean_d=np.sqrt(np.mean((d**2)))
+un_d=np.std(d)/10
+
+#N=2**12
+e=RMS2D(2**12)
+mean_e=np.sqrt(np.mean((e**2)))
+un_e=np.std(e)/10
+
+#N=2**13
+f=RMS2D(2**13)
+mean_f=np.sqrt(np.mean((f**2)))
+un_f=np.std(f)/10
+
+N=np.array([2**8,2**9,2**10,2**11,2**12,2**13])
+means=np.array([mean_a,mean_b, mean_c,mean_d, mean_e,mean_f])
+un=np.array([un_a,un_b, un_c,un_d, un_e,un_f])
+
+plt.semilogx(N,means, basex=2)
+plt.errorbar(N,means,yerr=un/N, label='Monte Carlo Simulation Results')
+plt.plot(N,np.sqrt(N),label='Theoretical Values' r'$\sqrt{N}$')
+plt.xlabel("Number of Generated Points (N)")
+plt.ylabel('RMS after 100 Trials')
+plt.title('2-D Random Walk (RMS2D)')
+plt.legend()
+plt.savefig('2-DRandomWalk(RMS).png')
+plt.show()
+plt.figure()
 
 
 

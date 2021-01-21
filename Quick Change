@@ -1,32 +1,32 @@
-#RMS Code
+#RMS2D Code
 
 #N=2**8
-a=RMS(2**8)
+a=RMS2D(2**8)
 mean_a=np.sqrt(np.mean((a**2)))
 un_a=np.std(a)/10
 
 #N=2**9
-b=RMS(2**9)
+b=RMS2D(2**9)
 mean_b=np.sqrt(np.mean((b**2)))
 un_b=np.std(b)/10
 
 #N=2**10
-c=RMS(2**10)
+c=RMS2D(2**10)
 mean_c=np.sqrt(np.mean((c**2)))
 un_c=np.std(c)/10
 
 #N=2**11
-d=RMS(2**11)
+d=RMS2D(2**11)
 mean_d=np.sqrt(np.mean((d**2)))
 un_d=np.std(d)/10
 
 #N=2**12
-e=RMS(2**12)
+e=RMS2D(2**12)
 mean_e=np.sqrt(np.mean((e**2)))
 un_e=np.std(e)/10
 
 #N=2**13
-f=RMS(2**13)
+f=RMS2D(2**13)
 mean_f=np.sqrt(np.mean((f**2)))
 un_f=np.std(f)/10
 
@@ -36,11 +36,11 @@ un=np.array([un_a,un_b, un_c,un_d, un_e,un_f])
 
 plt.semilogx(N,means, basex=2)
 plt.errorbar(N,means,yerr=un/N, label='Monte Carlo Simulation Results')
-plt.hlines(np.sqrt(N),2**3,2**14,label='Theoretical Value')
-plt.xlabel("Number of Generated Points")
-plt.ylabel('RMS after 100 Trials')
-plt.title('1-D Random Walk (RMS)')
+plt.hlines(np.sqrt(N),2**8,2**13,label='Theoretical Values' r'$\sqrt{N}$')
+plt.xlabel("Number of Generated Points (N)")
+plt.ylabel('RMS2D after 100 Trials')
+plt.title('1-D Random Walk (RMS2D)')
 plt.legend()
-plt.savefig('1D-RandomWalk(RMS).png')
+plt.savefig('1D-RandomWalk(RMS2D).png')
 plt.show()
 plt.figure()
