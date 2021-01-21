@@ -41,6 +41,7 @@ plt.title('Voltage and Delta Temperature Relation of the Thermocouple')
 plt.xlabel(r'$\Delta$''T (' r'$^{\circ}C$' ')')
 plt.ylabel('Voltage (mV)')
 plt.legend()
+plt.savefig('Thermocouple')
 plt.show()
 plt.figure()
 
